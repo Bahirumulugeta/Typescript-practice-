@@ -1,6 +1,15 @@
 class Department {
+  static country:string='Ethiopia';
   protected employees: string[] = [];
-  constructor(private readonly id: string, public name: string) {}
+  constructor(private readonly id: string, public name: string) {
+    console.log('with in a constructor',Department.country);
+  }
+
+  static createEmployee(name:string){
+   return {name:name};
+  }
+
+
   describe(this: Department) {
     console.log(`Department (${this.id}):${this.name}`);
   }
@@ -47,6 +56,9 @@ class Accounting extends Department {
     console.log(this.reports);
   }
 }
+const employee1 = Department.createEmployee('Bahiru');
+console.log(employee1,Department.country);
+
 const it = new ITDepartment("d1", ["Bahir"]);
 it.addEmployee("Bahiru");
 it.addEmployee("Mulugeta");
